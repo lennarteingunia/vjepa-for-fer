@@ -1,0 +1,30 @@
+name: jepaslt
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.10
+  - pip
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+  - pyyaml
+  - numpy
+  - pandas
+  - submitit
+  - braceexpand
+  - webdataset
+  - timm
+  - einops
+  - beartype
+  - pip:
+    - opencv-python
+    - ffmpeg-python
+    - decord
+    - lightning
+    - lightning[pytorch-extra]
+    - wandb
+    - loralib

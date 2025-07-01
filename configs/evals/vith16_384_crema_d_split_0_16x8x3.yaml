@@ -1,0 +1,44 @@
+nodes: 8
+tasks_per_node: 8
+tag: crema_d_0-16x8x3
+eval_name: video_classification_frozen
+resume_checkpoint: false
+data:
+    dataset_train: 
+        - /your/path/to/CREMA-D/split_1.csv 
+        - /your/path/to/CREMA-D/split_2.csv 
+        - /your/path/to/CREMA-D/split_3.csv 
+        - /your/path/to/CREMA-D/split_4.csv 
+    dataset_val: 
+        - /your/path/to/CREMA-D/split_0.csv 
+    dataset_type: VideoDataset
+    num_classes: 8
+    frames_per_clip: 16
+    num_segments: 8
+    num_views_per_segment: 3
+    frame_step: 4
+optimization:
+    attend_across_segments: true
+    num_epochs: 20
+    resolution: 384
+    batch_size: 4
+    weight_decay: 0.01
+    lr: 0.001
+    start_lr: 0.001
+    final_lr: 0.0
+    warmup: 0.
+    use_bfloat16: true
+pretrain:
+    model_name: vit_huge
+    checkpoint_key: target_encoder
+    clip_duration: null
+    frames_per_clip: 16
+    tubelet_size: 2
+    uniform_power: true
+    use_silu: false
+    tight_silu: false
+    use_sdpa: true
+    patch_size: 16
+    folder: /your/checkpoint/directory/
+    checkpoint: vith16-384.pth.tar
+    write_tag: crema_d_0
